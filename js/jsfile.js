@@ -985,6 +985,7 @@ var words = [
 var randnum=Math.floor((Math.random() * words.length) + 1); /*generates random words 
                                                             assigns them as randword*/
 var randword=words[randnum];
+randword=randword.toUpperCase();
                                     /*initialises the array guessword, assigns the contents as _*/
 var guessword=[];
 for (var j=0;j<randword.length;j++){
@@ -997,6 +998,7 @@ numofchances.innerHTML=noc;                                 /*prints noc in numo
 document.getElementById('guessword').innerHTML=guessword;   /* prints array guessword*/
 
 var inputletter = document.getElementById('inputletter');   /*gets the input letter*/
+inputletter.value=inputletter.value;
                     /*function to check the words*/
 function check() {
     noc--;                                                  /*noc subtracted on each click*/
@@ -1024,8 +1026,15 @@ function check() {
     if(noc==0){
         document.getElementById('answer').innerHTML=' correct answer is '+randword;
     }
+    document.getElementById('inputletter').value='';
 }
 
 function next(){
     window.location.reload();
+}
+
+function upperCaseF(a){
+    setTimeout(function(){
+        a.value = a.value.toUpperCase();
+    }, 1);
 }

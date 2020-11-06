@@ -9,7 +9,7 @@
 	<div id='word'></div>
 	<div id='guessword'></div>
 	<form>
-		<input type='text' id='inputletter' size=1 maxlength='1'/>
+		<input type='text' id='inputletter' size=1 maxlength='1' onkeydown="upperCaseF(this)" autocomplete="off"/>
 	</form>
 	<button id='submitletter' onclick=check();>Submit</button>
 	num of chances left: <span id='numofchances'></span>
