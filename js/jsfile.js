@@ -980,32 +980,52 @@ var words = [
     "you",
     "young"
   ]
-var randnum=Math.floor((Math.random() * words.length) + 1);
+
+
+var randnum=Math.floor((Math.random() * words.length) + 1); /*generates random words 
+                                                            assigns them as randword*/
 var randword=words[randnum];
-/*document.getElementById('word').innerHTML=randword;*/
+                                    /*initialises the array guessword, assigns the contents as _*/
 var guessword=[];
 for (var j=0;j<randword.length;j++){
     guessword[j]='_';
 }
+/*document.getElementById('word').innerHTML=words[randnum];   prints the randomword for now*/
+var numofchances=document.getElementById('numofchances');   /*gets the object numofchances*/
+var noc=10;                                                 /*initialises noc*/
+numofchances.innerHTML=noc;                                 /*prints noc in numofchances*/
+document.getElementById('guessword').innerHTML=guessword;   /* prints array guessword*/
 
-document.getElementById('guessword').innerHTML=guessword;
-
-var inputletter = document.getElementById('inputletter');
+var inputletter = document.getElementById('inputletter');   /*gets the input letter*/
+                    /*function to check the words*/
 function check() {
-    var flag1=true;
+    noc--;                                                  /*noc subtracted on each click*/
+    numofchances.innerHTML=noc;                             /*noc displayed in numofchances*/
+    var flag1=true;/*used to stop same element being printed guessletters many times*/ 
+                        /*for each input the element of randword is iterated*/
     for(var i=0;i<randword.length;i++){
-        if(inputletter.value==randword[i]){
-            guessword[i]=inputletter.value;
+        if(inputletter.value==randword[i]){   /*checked whether input letter = randword element*/
+            guessword[i]=inputletter.value;   /*if true _ of guessword is replaced with the element*/
             document.getElementById('guessword').innerHTML=guessword;
-        }else{
-            if(flag1==true){
-                document.getElementById('guessletters').innerHTML += inputletter.value+',';
-                flag1=false;
+                                                    /*guessword is printed*/
+        }else{                                /*if false */
+            if(flag1==true){                        /*if guessletter is not printed*/
+                document.getElementById('guessletters').innerHTML += inputletter.value+',';/*print letter*/
+                flag1=false;                        /*no need to print again*/
             }
             
         }
     }
+    var guessstring=guessword.join("");     /*remove the commas in between array guessword*/
+    guessstring=guessstring.toString();     /*convert to guessstring*/
+    if(guessstring==randword){
+        document.getElementById('answer').innerHTML=' correct';/*print correct*/
+    }
+    if(noc==0){
+        document.getElementById('answer').innerHTML=' correct answer is '+randword;
+    }
 }
 
-
-
+function next(){
+    window.location.reload();
+}
