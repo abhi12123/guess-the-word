@@ -982,7 +982,7 @@ var words = [
   ]
 var randnum=Math.floor((Math.random() * words.length) + 1);
 var randword=words[randnum];
-document.getElementById('word').innerHTML=randword;
+/*document.getElementById('word').innerHTML=randword;*/
 var guessword=[];
 for (var j=0;j<randword.length;j++){
     guessword[j]='_';
@@ -992,12 +992,17 @@ document.getElementById('guessword').innerHTML=guessword;
 
 var inputletter = document.getElementById('inputletter');
 function check() {
+    var flag1=true;
     for(var i=0;i<randword.length;i++){
         if(inputletter.value==randword[i]){
             guessword[i]=inputletter.value;
             document.getElementById('guessword').innerHTML=guessword;
         }else{
-            document.getElementById('nameDisplay').innerHTML += '  ';
+            if(flag1==true){
+                document.getElementById('guessletters').innerHTML += inputletter.value+',';
+                flag1=false;
+            }
+            
         }
     }
 }
