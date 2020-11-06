@@ -3,16 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Guess the Word</title>
+	<link rel="stylesheet" href="css/cssfile.css">
 </head>
 <body>
 	<h1>Guess the Word</h1>
-	<div id='word'></div>
 	<div id='guessword'></div>
 	<form>
-		<input type='text' id='inputletter' size=1 maxlength='1' onkeydown="upperCaseF(this)" autocomplete="off"/>
+		<input  type='text' id='inputletter' size=1 maxlength='1' onkeydown="upperCaseF(this)" autocomplete="off"/>
 	</form>
-	<button id='submitletter' onclick=check();>Submit</button>
-	num of chances left: <span id='numofchances'></span>
+	<button id='submitletter' onclick=check();>Submit Letter</button>
+	<div style="font-size: 2em">num of chances left: <span id='numofchances'></span></div>
 	<div id="guessletters">Guessed letters : </div>
 	<div id="answer"></div>
 	<button id="next" onclick=next();>Next</button>

@@ -995,7 +995,7 @@ for (var j=0;j<randword.length;j++){
 var numofchances=document.getElementById('numofchances');   /*gets the object numofchances*/
 var noc=10;                                                 /*initialises noc*/
 numofchances.innerHTML=noc;                                 /*prints noc in numofchances*/
-document.getElementById('guessword').innerHTML=guessword;   /* prints array guessword*/
+document.getElementById('guessword').innerHTML=guessword.join(' ');   /* prints array guessword*/
 
 var inputletter = document.getElementById('inputletter');   /*gets the input letter*/
 inputletter.value=inputletter.value;
@@ -1008,7 +1008,7 @@ function check() {
     for(var i=0;i<randword.length;i++){
         if(inputletter.value==randword[i]){   /*checked whether input letter = randword element*/
             guessword[i]=inputletter.value;   /*if true _ of guessword is replaced with the element*/
-            document.getElementById('guessword').innerHTML=guessword;
+            document.getElementById('guessword').innerHTML=guessword.join(' ');
                                                     /*guessword is printed*/
         }else{                                /*if false */
             if(flag1==true){                        /*if guessletter is not printed*/
@@ -1025,6 +1025,7 @@ function check() {
     }
     if(noc==0){
         document.getElementById('answer').innerHTML=' correct answer is '+randword;
+        document.getElementById('submitletter').disabled = true;
     }
     document.getElementById('inputletter').value='';
 }
